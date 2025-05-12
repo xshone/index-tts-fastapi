@@ -1,0 +1,17 @@
+name: index-tts
+services:
+  indextts:
+    container_name: index-tts
+    tty: true
+    image: freex/index-tts:1
+    ports:
+      - 8066:8066
+    # command: ["python", "webui.py"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities:
+                - gpu

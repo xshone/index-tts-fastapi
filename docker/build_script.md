@@ -1,0 +1,1 @@
+docker build -f .\docker\Dockerfile -t freex/index-tts:1 .

@@ -1,6 +1,6 @@
 FROM pytorch/pytorch:2.6.0-cuda12.6-cudnn9-devel
 
-WORKDIR /app/index-tts
+WORKDIR /app
 ENV TZ=Asia/Shanghai
 
 # Install system dependencies including ffmpeg
@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first to leverage Docker cache
-COPY ../requirements.txt /app/index-tts/requirements.txt
+COPY ../requirements.txt /app/requirements.txt
 
 # Install Python dependencies
 # Using --no-cache-dir to reduce image size
@@ -30,8 +30,9 @@ ENV NVIDIA_VISIBLE_DEVICES=all
 ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility
 
 # Copy the rest of the application code
-COPY ../ /app/index-tts/
+# COPY ../ /app/
 
+EXPOSE 8060
 EXPOSE 8066
 # Set the entrypoint for the application
-ENTRYPOINT ["python", "webui.py"]
+ENTRYPOINT ["python", "launch.py"]

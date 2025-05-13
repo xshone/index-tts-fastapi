@@ -1,12 +1,15 @@
-name: index-tts
+name: freex-tts
 services:
   indextts:
-    container_name: index-tts
+    container_name: freex-tts
     tty: true
-    image: freex/index-tts:1
+    image: freex-tts:1
     ports:
       - 8066:8066
-    # command: ["python", "webui.py"]
+      - 8060:8060
+    # command: ["python", "launch.py"]
+    volumes:
+      - "D:\\Code\\AI\\index-tts-fastapi:/app"
     deploy:
       resources:
         reservations:

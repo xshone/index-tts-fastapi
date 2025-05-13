@@ -60,7 +60,8 @@ class TTSService:
         
         logger.info(f"Generating speech with voice={voice}, text='{text[:50]}...'")
         # Generate speech
-        self.tts.infer(voice_file, text, wav_output)
+        # self.tts.infer(voice_file, text, wav_output)
+        self.tts.infer_fast(voice_file, text, wav_output)
         
         # Apply audio effects if needed
         if speed != 1.0 or gain != 0.0:

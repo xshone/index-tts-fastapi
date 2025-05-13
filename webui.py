@@ -1,5 +1,4 @@
 import os
-import shutil
 import sys
 import threading
 import time
@@ -43,7 +42,7 @@ def update_prompt_audio():
     return update_button
 
 
-with gr.Blocks() as demo:
+with gr.Blocks() as app:
     mutex = threading.Lock()
     gr.HTML('''
     <h2><center>IndexTTS: An Industrial-Level Controllable and Efficient Zero-Shot Text-To-Speech System</h2>
@@ -77,5 +76,5 @@ with gr.Blocks() as demo:
 
 
 if __name__ == "__main__":
-    demo.queue(20)
-    demo.launch(server_name="0.0.0.0", server_port=8066)
+    app.queue(20)
+    app.launch(server_name="0.0.0.0", server_port=8066)
